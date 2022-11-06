@@ -50,10 +50,6 @@ class InvoiceRepository
 
   def update(id, attributes)
     find_by_id(id).update(attributes) unless find_by_id(id).nil?
-    # if updated_invoice = find_by_id(id)
-    #   updated_invoice.status = attributes[:status]
-    #   attributes[:updated_at] = Time.now
-    # end
   end
 
   def delete(id)
