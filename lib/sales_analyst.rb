@@ -217,4 +217,6 @@ class SalesAnalyst
     answer.keep_if { |_merch, items| items.count == 1 }
     answer.keys
   end
+
+  
 end
