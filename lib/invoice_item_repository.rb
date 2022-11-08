@@ -2,11 +2,8 @@ require 'csv'
 require_relative './invoice_item'
 require_relative 'repository'
 
-
-
 class InvoiceItemRepository < Repository
-
-  def new_obj(attributes)  
+  def new_obj(attributes)
     new_obj_class(attributes, InvoiceItem)
   end
 
@@ -15,6 +12,12 @@ class InvoiceItemRepository < Repository
   end
 
   def find_all_by_invoice_id(id)
-    @repo.select { |invoice_item| invoice_item.invoice_id == id }
+    
   end
+
+  def find_all_by_date(date)
+
+  end
+
+
 end

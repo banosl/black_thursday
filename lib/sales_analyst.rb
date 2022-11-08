@@ -98,4 +98,17 @@ class SalesAnalyst
     invoice_items = sales_engine.invoice_items.find_all_by_invoice_id(invoice_id)
     invoice_items.sum { |invoice_item| invoice_item.quantity*invoice_item.unit_price}
   end
+
+  def total_revenue_by_date(date)
+    # Note: When calculating revenue, the unit_price listed within
+    #  invoice_items should be used.
+
+    # given date, find invoice_items
+    # with invoice_items, find revenue
+    require 'pry'; binding.pry
+    
+    # The invoice_item.unit_price 
+    # represents the final sale price of an item after sales, 
+    # discounts or other intermediary price changes.
+  end
 end
