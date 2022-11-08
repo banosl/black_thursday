@@ -109,40 +109,28 @@ class SalesAnalyst
 
   def merchants_with_only_one_item
     grouped_items = items.group_by { |item| item.merchant_id }
-    
+    # require 'pry'; binding.pry
     merchant_collection = grouped_items.transform_keys { |merchant_id| sales_engine.merchants.find_by_id(merchant_id) }
     merchant_collection.keep_if { |_merch, items| items.count == 1 }
     merchant_collection.keys
   end
 
   def merchants_with_only_one_item_registered_in_month(month)
-    test = items.keep_if do |item|
-      item.created_at.month == Date::MONTHNAMES.index('March')
-    end
-    # require 'pry'; binding.pry
 
-    month_invoices = sales_engine.invoices.all.keep_if do |invoice|
-      invoice.created_at.month == Date::MONTHNAMES.index(month)
+    merchants_created_in_month = merchants.select do |merchant|
+      merchant.created_at.month == Date::MONTHNAMES.index(month)
     end
 
-    grouped_invoices = month_invoices.group_by do |invoice|
-      invoice.merchant_id
-    end
-
-    merchant_collection = grouped_invoices.transform_keys do |merchant_id|
+    grouped_items = items.group_by { |item| item.merchant_id }
+    grouped_items.transform_keys! do |merchant_id|
       sales_engine.merchants.find_by_id(merchant_id)
     end
 
-    sample = merchant_collection.keep_if do |_merch, invoices|
-      invoices.count == 1
+    answer = grouped_items.keep_if do |merchant, items|
+      merchants_created_in_month.include?(merchant)
     end
-    # require 'pry'; binding.pry
+    answer.keep_if { |_merch, items| items.count == 1 }
 
-    # sample.transform_values! do |invoice|
-    #   # require 'pry'; binding.pry
-    #    sales_engine.invoice_items.find_by_id(invoice[0].id)
-    # end
-
-    merchant_collection.keys
+    answer.keys
   end
 end

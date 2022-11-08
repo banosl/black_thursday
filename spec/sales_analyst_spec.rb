@@ -109,19 +109,16 @@ RSpec.describe SalesAnalyst do
     end
 
     it '#merchants_with_only_one_item_registered_in_month' do
-    sales_analyst = @sales_engine.analyst
+      sales_analyst = @sales_engine.analyst
+      # require 'pry'; binding.pry
 
-    expect(sales_analyst.merchants_with_only_one_item_registered_in_month("January")).to be_a(Array)
-    expect(sales_analyst.merchants_with_only_one_item_registered_in_month("January")[0]).to be_instance_of(Merchant)
+      expect(sales_analyst.merchants_with_only_one_item_registered_in_month('January')).to be_a(Array)
+      expect(sales_analyst.merchants_with_only_one_item_registered_in_month('January')[0]).to be_instance_of(Merchant)
+    end
 
-
-  end
-
-  it '#revenue_by_merchant' do
-  sales_analyst = @sales_engine.analyst
-  expect(sales_analyst.revenue_by_merchant(1)).to be_instance_of(BigDecimal)
-
-
-end
+    xit '#most_sold_items_for_merchant' do
+      sales_analyst = @sales_engine.analyst
+      expect(sales_analyst.revenue_by_merchant(1)).to be_instance_of(BigDecimal)
+    end
   end
 end
