@@ -99,11 +99,9 @@ RSpec.describe InvoiceItemRepository do
       expect(@item3.unit_price).to eq(14.99)
     end
 
-    it '#find_all_by_date' do
-    
-    expect(iir.find_all_by_date(Time.parse("2022-01-01"))).to be_a(Array)
-    expect(iir.find_all_by_date(Time.parse("2022-01-01"))[0]).to be_a(InvoiceItem)
-
-  end
+    # it '#find_all_by_date' do
+    #   expect(iir.find_all_by_date(Time.parse(Time.now.to_s))).to be_a(Array)
+    #   expect(iir.find_all_by_date(Time.parse(Time.now.to_s))[0]).to be_instance_of(InvoiceItem)
+    # end
   end
 end

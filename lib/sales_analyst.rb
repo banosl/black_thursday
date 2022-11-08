@@ -118,22 +118,22 @@ class SalesAnalyst
   # end
 
   def total_revenue_by_date(date)
-    all_invoices = sales_engine.invoice_items.all.find_all do |invoice_item|
-      require 'pry'; binding.pry
-      date.strftime('%B %d, %Y') == invoice_item.created_at.strftime('%B %d, %Y')
-    end.flatten
-    total_revenue(all_invoices)
+  invoices_by_date = sales_engine.invoices.all.find_all do |invoice|
+      date.strftime('%B %d, %Y') == invoice.created_at.strftime('%B %d, %Y')
+    end
+  invoice_items_by_date = sales_engine.invoice_items.find_all_by_invoice_id(invoices_by_date[0].id)
+  invoice_items_by_date.sum {|invoice| invoice.unit_price* invoice.quantity}
   end
 
-  def total_revenue(invoices)
-    require 'pry'
-    binding.pry
-    invoices.inject(0) do |sum, invoice|
-      if invoice_paid_in_full?(invoice.id)
-        sum + invoice.total
-      else
-        sum
-      end
-    end
-  end
+  # def total_revenue(invoices)
+  #   # require 'pry'
+  #   # binding.pry
+  #   invoices.inject(0) do |sum, invoice|
+  #     if invoice_paid_in_full?(invoice.id)
+  #       sum + invoice.total
+  #     else
+  #       sum
+  #     end
+  #   end
+  # end
 end

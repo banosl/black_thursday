@@ -15,23 +15,10 @@ class InvoiceItemRepository < Repository
     @repo.select { |invoice_item| invoice_item.invoice_id == id }
   end
 
-  def find_all_by_date(date)
-    # test = date.to_a.drop(3)
-    # 4.times {test.pop}
-    # date = Date.new(*test.reverse)
-
-    invoice_items = @repo.find_all do |invoice_item|
-      require 'pry'; binding.pry
-      date_sanitize(date) === date_sanitize(invoice_item.created_at)
-      # Date.parse(date.to_s) === Date.parse(invoice_item.created_at.to_s)
-    end
-    require 'pry'
-    binding.pry
-  end
-
-  def date_sanitize(date)
-    test = date.to_a.drop(3)
-    4.times { test.pop }
-    Date.new(*test.reverse)
-  end
+  # def find_all_by_date(date)
+  #  test = @repo.find_all do |invoice_item|
+  #     date.year == invoice_item.created_at.year && date.month == invoice_item.created_at.month && date.day == invoice_item.created_at.day
+  #     # date.strftime('%B %d, %Y') == invoice_item.created_at.strftime('%B %d, %Y')
+  #   end
+  # end
 end
