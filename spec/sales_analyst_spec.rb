@@ -107,5 +107,21 @@ RSpec.describe SalesAnalyst do
       expect(sales_analyst.merchants_with_only_one_item).to be_a(Array)
       expect(sales_analyst.merchants_with_only_one_item[0]).to be_instance_of(Merchant)
     end
+
+    it '#merchants_with_only_one_item_registered_in_month' do
+    sales_analyst = @sales_engine.analyst
+
+    expect(sales_analyst.merchants_with_only_one_item_registered_in_month("January")).to be_a(Array)
+    expect(sales_analyst.merchants_with_only_one_item_registered_in_month("January")[0]).to be_instance_of(Merchant)
+
+
+  end
+
+  it '#revenue_by_merchant' do
+  sales_analyst = @sales_engine.analyst
+  expect(sales_analyst.revenue_by_merchant(1)).to be_instance_of(BigDecimal)
+
+
+end
   end
 end

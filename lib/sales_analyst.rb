@@ -99,24 +99,6 @@ class SalesAnalyst
     invoice_items.sum { |invoice_item| invoice_item.quantity * invoice_item.unit_price }
   end
 
-  # def total_revenue_by_date(date)
-  #   # NOTE: When calculating revenue, the unit_price listed within
-  #   #  invoice_items should be used.
-
-  #   # given date, find invoice_items
-  #   # with invoice_items, find revenue
-
-  #   invoice_items = sales_engine.invoice_items.find_all_by_date(date)
-  #   sum = invoice_items.sum do |invoice_item|
-  #     invoice_item.unit_price
-  #   end
-
-  #   # require 'pry'; binding.pry
-  #   # The invoice_item.unit_price
-  #   # represents the final sale price of an item after sales,
-  #   # discounts or other intermediary price changes.
-  # end
-
   def total_revenue_by_date(date)
     invoices_by_date = sales_engine.invoices.all.find_all do |invoice|
       date.strftime('%B %d, %Y') == invoice.created_at.strftime('%B %d, %Y')
@@ -127,8 +109,40 @@ class SalesAnalyst
 
   def merchants_with_only_one_item
     grouped_items = items.group_by { |item| item.merchant_id }
+    
     merchant_collection = grouped_items.transform_keys { |merchant_id| sales_engine.merchants.find_by_id(merchant_id) }
     merchant_collection.keep_if { |_merch, items| items.count == 1 }
+    merchant_collection.keys
+  end
+
+  def merchants_with_only_one_item_registered_in_month(month)
+    test = items.keep_if do |item|
+      item.created_at.month == Date::MONTHNAMES.index('March')
+    end
+    # require 'pry'; binding.pry
+
+    month_invoices = sales_engine.invoices.all.keep_if do |invoice|
+      invoice.created_at.month == Date::MONTHNAMES.index(month)
+    end
+
+    grouped_invoices = month_invoices.group_by do |invoice|
+      invoice.merchant_id
+    end
+
+    merchant_collection = grouped_invoices.transform_keys do |merchant_id|
+      sales_engine.merchants.find_by_id(merchant_id)
+    end
+
+    sample = merchant_collection.keep_if do |_merch, invoices|
+      invoices.count == 1
+    end
+    # require 'pry'; binding.pry
+
+    # sample.transform_values! do |invoice|
+    #   # require 'pry'; binding.pry
+    #    sales_engine.invoice_items.find_by_id(invoice[0].id)
+    # end
+
     merchant_collection.keys
   end
 end
