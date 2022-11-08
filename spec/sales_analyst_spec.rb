@@ -98,10 +98,14 @@ RSpec.describe SalesAnalyst do
     end
 
     it '#total_revenue_by_date' do
-    sales_analyst = @sales_engine.analyst
-    expect(sales_analyst.total_revenue_by_date(Time.parse("2009-02-07"))).to be_instance_of(BigDecimal)
+      sales_analyst = @sales_engine.analyst
+      expect(sales_analyst.total_revenue_by_date(Time.parse('2009-02-07'))).to be_instance_of(BigDecimal)
+    end
 
-
-  end
+    it '#merchants_with_only_one_item' do
+      sales_analyst = @sales_engine.analyst
+      expect(sales_analyst.merchants_with_only_one_item).to be_a(Array)
+      expect(sales_analyst.merchants_with_only_one_item[0]).to be_instance_of(Merchant)
+    end
   end
 end

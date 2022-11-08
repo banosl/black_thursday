@@ -125,15 +125,5 @@ class SalesAnalyst
   invoice_items_by_date.sum {|invoice| invoice.unit_price* invoice.quantity}
   end
 
-  # def total_revenue(invoices)
-  #   # require 'pry'
-  #   # binding.pry
-  #   invoices.inject(0) do |sum, invoice|
-  #     if invoice_paid_in_full?(invoice.id)
-  #       sum + invoice.total
-  #     else
-  #       sum
-  #     end
-  #   end
-  # end
+  # t
 end
