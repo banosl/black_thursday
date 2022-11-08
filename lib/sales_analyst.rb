@@ -118,12 +118,17 @@ class SalesAnalyst
   # end
 
   def total_revenue_by_date(date)
-  invoices_by_date = sales_engine.invoices.all.find_all do |invoice|
+    invoices_by_date = sales_engine.invoices.all.find_all do |invoice|
       date.strftime('%B %d, %Y') == invoice.created_at.strftime('%B %d, %Y')
     end
-  invoice_items_by_date = sales_engine.invoice_items.find_all_by_invoice_id(invoices_by_date[0].id)
-  invoice_items_by_date.sum {|invoice| invoice.unit_price* invoice.quantity}
+    invoice_items_by_date = sales_engine.invoice_items.find_all_by_invoice_id(invoices_by_date[0].id)
+    invoice_items_by_date.sum { |invoice| invoice.unit_price * invoice.quantity }
   end
 
-  # t
+  def merchants_with_only_one_item
+    grouped_items = items.group_by { |item| item.merchant_id }
+    merchant_collection = grouped_items.transform_keys { |merchant_id| sales_engine.merchants.find_by_id(merchant_id) }
+    merchant_collection.keep_if { |_merch, items| items.count == 1 }
+    merchant_collection.keys
+  end
 end
