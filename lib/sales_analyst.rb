@@ -85,6 +85,7 @@ class SalesAnalyst
   end
 
   def invoice_paid_in_full?(invoice_id)
+    # KR refactor using find_by_id
     purchases = sales_engine.transactions.find_all_by_invoice_id(invoice_id)
     if purchases.empty?
       false
