@@ -176,7 +176,9 @@ class SalesAnalyst
     if purchases.empty?
       false
     else
-    purchases.first.result == :success 
+      purchases.any? do |purchase|
+        purchase.result == :success
+      end
     end
   end
 
