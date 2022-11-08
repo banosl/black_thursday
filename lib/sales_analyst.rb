@@ -114,23 +114,4 @@ class SalesAnalyst
     merchant_collection.keep_if { |_merch, items| items.count == 1 }
     merchant_collection.keys
   end
-
-  def merchants_with_only_one_item_registered_in_month(month)
-
-    merchants_created_in_month = merchants.select do |merchant|
-      merchant.created_at.month == Date::MONTHNAMES.index(month)
-    end
-
-    grouped_items = items.group_by { |item| item.merchant_id }
-    grouped_items.transform_keys! do |merchant_id|
-      sales_engine.merchants.find_by_id(merchant_id)
-    end
-
-    answer = grouped_items.keep_if do |merchant, items|
-      merchants_created_in_month.include?(merchant)
-    end
-    answer.keep_if { |_merch, items| items.count == 1 }
-
-    answer.keys
-  end
 end
