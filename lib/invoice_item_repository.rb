@@ -16,12 +16,22 @@ class InvoiceItemRepository < Repository
   end
 
   def find_all_by_date(date)
-    @repo.select do |invoice_item|
-      Date.parse(invoice_item.created_at.to_s) == Date.parse(date.to_s) 
-   end
-   
+    # test = date.to_a.drop(3)
+    # 4.times {test.pop}
+    # date = Date.new(*test.reverse)
+
+    invoice_items = @repo.find_all do |invoice_item|
+      require 'pry'; binding.pry
+      date_sanitize(date) === date_sanitize(invoice_item.created_at)
+      # Date.parse(date.to_s) === Date.parse(invoice_item.created_at.to_s)
+    end
+    require 'pry'
+    binding.pry
   end
 
-
-
+  def date_sanitize(date)
+    test = date.to_a.drop(3)
+    4.times { test.pop }
+    Date.new(*test.reverse)
+  end
 end
