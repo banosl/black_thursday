@@ -100,8 +100,9 @@ RSpec.describe InvoiceItemRepository do
     end
 
     it '#find_all_by_date' do
-    expect(iir.find_all_by_date(Time.parse("2009-02-07"))).to be_a(Array)
-    expect(iir.find_all_by_date(Time.parse("2009-02-07"))[0]).to be_a(InvoiceItem)
+    
+    expect(iir.find_all_by_date(Time.parse("2022-01-01"))).to be_a(Array)
+    expect(iir.find_all_by_date(Time.parse("2022-01-01"))[0]).to be_a(InvoiceItem)
 
   end
   end

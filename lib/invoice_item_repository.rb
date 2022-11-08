@@ -12,12 +12,16 @@ class InvoiceItemRepository < Repository
   end
 
   def find_all_by_invoice_id(id)
-    
+    @repo.select { |invoice_item| invoice_item.invoice_id == id }
   end
 
   def find_all_by_date(date)
-
+    @repo.select do |invoice_item|
+      Date.parse(invoice_item.created_at.to_s) == Date.parse(date.to_s) 
+   end
+   
   end
+
 
 
 end
