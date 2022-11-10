@@ -23,11 +23,11 @@ class Repository
   end
 
   def new_id(attributes)
-    unless @repo.empty?
-      attributes[:id] = all.max do |object|
-        object.id
-      end.id + 1
-    end
+    return if @repo.empty?
+
+    attributes[:id] = all.max do |object|
+      object.id
+    end.id + 1
   end
 
   def new_obj_class(attributes, class_arg)

@@ -2,15 +2,14 @@ require 'csv'
 require 'time'
 require_relative 'sanitize'
 
-
-class Customer 
+class Customer
   include Sanitize
-  attr_reader :id, 
+  attr_reader :id,
               :first_name,
               :last_name,
               :created_at,
               :updated_at
-  
+
   def initialize(info)
     @id = info[:id].to_i
     @first_name = info[:first_name]

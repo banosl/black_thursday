@@ -6,7 +6,7 @@ require_relative './item_repository'
 require_relative 'sanitize'
 
 class InvoiceItem
-include Sanitize
+  include Sanitize
   attr_reader :id,
               :item_id,
               :invoice_id,

@@ -1,7 +1,7 @@
 require_relative 'sanitize'
 
 class Merchant
-include Sanitize
+  include Sanitize
   attr_reader :id, :name, :created_at, :updated_at
 
   def initialize(args)
@@ -14,15 +14,4 @@ include Sanitize
   def update(attributes)
     @name = attributes[:name]
   end
-
-  # def revenue
-  #   require 'pry'; binding.pry
-  #   invoices.inject(BigDecimal.new(0)) do |sum, invoice|
-  #     if invoice.is_paid_in_full?
-  #       sum + invoice.total
-  #     else
-  #       sum
-  #     end
-  #   end
-  # end
 end

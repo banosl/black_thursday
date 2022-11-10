@@ -2,7 +2,6 @@ require_relative 'merchant'
 require_relative 'repository'
 
 class MerchantRepository < Repository
-
   def new_obj(attributes)
     new_obj_class(attributes, Merchant)
   end

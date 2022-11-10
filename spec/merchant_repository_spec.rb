@@ -2,7 +2,7 @@ require './lib/merchant'
 require './lib/merchant_repository'
 
 RSpec.describe MerchantRepository do
-  let(:merch_repo) {MerchantRepository.new}
+  let(:merch_repo) { MerchantRepository.new }
 
   it 'exists' do
     expect(merch_repo).to be_a(MerchantRepository)
@@ -52,7 +52,6 @@ RSpec.describe MerchantRepository do
   end
 
   it '#delete Merchants by id' do
-
     merchant1 = merch_repo.create({ id: 5, name: 'Turing School' })
     merchant2 = merch_repo.create({ id: 6, name: 'Another School' })
     merchant3 = merch_repo.create({ id: 7, name: 'The Other School' })
@@ -70,9 +69,4 @@ RSpec.describe MerchantRepository do
     merch_repo.update(5, { name: 'Different School' })
     expect(merchant1.name).to eq('Different School')
   end
-
-#   it '#parse reads csv data' do
-#   merch_repo.parse_data({merchants: './data/merchants.csv'})
-#   mocks and stubs
-#   end
 end

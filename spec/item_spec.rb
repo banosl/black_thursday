@@ -1,7 +1,4 @@
-# require 'simplecov'
-# SimpleCov.start
 require './lib/item'
-require 'pry'
 require 'time'
 
 RSpec.describe Item do
@@ -17,7 +14,7 @@ RSpec.describe Item do
              })
   end
 
-it '#initialize' do
+  it '#initialize' do
     expect(i).to be_instance_of(Item)
     expect(i.id).to eq(1)
     expect(i.name).to eq('Pencil')
@@ -29,7 +26,7 @@ it '#initialize' do
   end
 
   it '#to_price' do
-  expect(i.to_price("10.99")).to eq(10.99)
+    expect(i.to_price('10.99')).to eq(10.99)
   end
 
   it '#unit_price_to_dollars' do
@@ -38,10 +35,10 @@ it '#initialize' do
 
   it '#update' do
     i.update({
-      name: 'Paint Brush',
-      description: 'You can use it to paint things',
-      unit_price: BigDecimal(12.99, 4)
-    })
+               name: 'Paint Brush',
+               description: 'You can use it to paint things',
+               unit_price: BigDecimal(12.99, 4)
+             })
     expect(i.name).to eq('Paint Brush')
     expect(i.description).to eq('You can use it to paint things')
     expect(i.unit_price_to_dollars).to eq(12.99)
