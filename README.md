@@ -55,6 +55,14 @@ return the first item with highest quantity
 These steps were translated to lines of code within the method.
 The cases in which a merchant has multiple highest selling items was tested with a specific merchant as well.
 
+For #best_item_for_merchant, the process involved following the data on google sheets to create a trail of steps that helped conceptualize what would be needed for the code. With google sheets, the individual merchant IDs were followed to create a chain of data that could then be replicated with code. Using the selected_merchant ID to form the input for the method, the resulting top_item_ID was used to set the expectation. Three merchant_ids were selected randomly for the tests.
+The resulting method follows the same path that was taken with google sheets. The chain and pseudo code are below.
+1. Obtain an array of invoices with merchant_id as an input
+1. If each invoice was paid in full, those invoices are collected in an array.
+1. Use the resulting array to identify invoice items, iterate over them and calculate the total revenue for each in a separate array (invoice_item_revenues).
+1. Sort the array by smallest to largest revenue total and identify the item ID of the last one on the list.
+1. The resulting item_ID is the desired one to match the expectation on the test for the corresponding merchant_ID.
+
 ### Questions
 1. What is our biggest area of opportunity within our project/what would you have done differently?
 1. What is the process for building a test(s) for the last two methods in iteration 4 (no spec_harness)?
