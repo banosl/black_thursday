@@ -53,7 +53,7 @@ return the first item with highest quantity
 These steps were translated to lines of code within the method.
 The cases in which a merchant has multiple highest selling items was tested with a specific merchant as well.
 
-### Question
+### Questions
 1. What is our biggest area of opportunity within our project/what would you have done differently?
 1. What is the process for building a test(s) for the last two methods in iteration 4 (no spec_harness)?
 
