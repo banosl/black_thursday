@@ -16,7 +16,9 @@ From a technical perspective, this project will emphasize:
 * Encapsulating Responsibilities
 * Light data / analytics
 
+
 **As a group, discuss and write your answers to the following questions. Include your responses as a section in your project README.**
+
 What was the most challenging aspect of this project?
 * The most challegining part of this project was developing the sales engine and collaboration with git.
 
