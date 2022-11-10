@@ -16,6 +16,8 @@ From a technical perspective, this project will emphasize:
 * Encapsulating Responsibilities
 * Light data / analytics
 
+____
+
 
 
 
