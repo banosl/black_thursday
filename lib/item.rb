@@ -1,12 +1,11 @@
 require 'bigdecimal'
 require 'csv'
 require 'time'
-require 'pry'
 require_relative 'item_repository'
 require_relative 'sanitize'
 
 class Item
-include Sanitize
+  include Sanitize
   attr_reader :id,
               :name,
               :description,

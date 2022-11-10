@@ -1,29 +1,28 @@
 require './lib/item_repository'
-require 'pry'
 
 RSpec.describe ItemRepository do
   let(:ir) { ItemRepository.new }
   it 'creates new instance with attributes' do
     i1 = ir.create({
-                       id: 1,
-                       name: 'Pencil',
-                       description: 'You can use it to write things',
-                       unit_price: BigDecimal(10.99, 4),
-                       created_at: Time.now,
-                       updated_at: Time.now,
-                       merchant_id: 2
-                     })
+                     id: 1,
+                     name: 'Pencil',
+                     description: 'You can use it to write things',
+                     unit_price: BigDecimal(10.99, 4),
+                     created_at: Time.now,
+                     updated_at: Time.now,
+                     merchant_id: 2
+                   })
     expect(ir.all).to eq([i1])
 
     i2 = ir.create({
 
-                       name: 'Pencil',
-                       description: 'You can use it to write things',
-                       unit_price: BigDecimal(10.99, 4),
-                       created_at: Time.now,
-                       updated_at: Time.now,
-                       merchant_id: 2
-                     })
+                     name: 'Pencil',
+                     description: 'You can use it to write things',
+                     unit_price: BigDecimal(10.99, 4),
+                     created_at: Time.now,
+                     updated_at: Time.now,
+                     merchant_id: 2
+                   })
 
     expect(i1.id).to eq(1)
     expect(ir.all).to eq([i1, i2])
@@ -33,14 +32,14 @@ RSpec.describe ItemRepository do
   context 'create item' do
     before(:each) do
       ir.create({
-                    id: 1,
-                    name: 'Pencil',
-                    description: 'You can use it to write things',
-                    unit_price: BigDecimal(10.99, 4),
-                    created_at: Time.now,
-                    updated_at: Time.now,
-                    merchant_id: 2
-                  })
+                  id: 1,
+                  name: 'Pencil',
+                  description: 'You can use it to write things',
+                  unit_price: BigDecimal(10.99, 4),
+                  created_at: Time.now,
+                  updated_at: Time.now,
+                  merchant_id: 2
+                })
     end
 
     it 'returns all known item instances' do
@@ -84,10 +83,10 @@ RSpec.describe ItemRepository do
 
     it 'updates Item instance' do
       ir.update(1, {
-                    name: 'Paint Brush',
-                    description: 'You can use it to paint things',
-                    unit_price: BigDecimal(12.99, 4)
-                  })
+                  name: 'Paint Brush',
+                  description: 'You can use it to paint things',
+                  unit_price: BigDecimal(12.99, 4)
+                })
       expect(ir.find_by_id(1).name).to eq('Paint Brush')
     end
 

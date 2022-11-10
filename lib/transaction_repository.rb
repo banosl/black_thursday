@@ -12,14 +12,13 @@ class TransactionRepository < Repository
 
   def find_all_by_credit_card_number(cc)
     @repo.select do |transaction|
-        transaction.credit_card_number == cc
+      transaction.credit_card_number == cc
     end
   end
 
   def find_all_by_result(result)
     @repo.select do |transaction|
-        transaction.result == result
+      transaction.result == result
     end
   end
-
 end

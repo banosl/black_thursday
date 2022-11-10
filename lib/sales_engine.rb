@@ -9,8 +9,6 @@ require_relative 'invoice_item'
 require_relative 'transaction_repository'
 require_relative 'transaction'
 require_relative 'customer_repository'
-# require_relative 'customer'
-require 'pry'
 
 class SalesEngine
   attr_reader :merchants,
@@ -42,6 +40,5 @@ class SalesEngine
 
   def analyst
     @analyst = SalesAnalyst.new(self)
-    # KR why is analyst an attribute value?
   end
 end

@@ -1,10 +1,8 @@
 require 'csv'
 require_relative 'item'
-require 'pry'
 require_relative 'repository'
 
 class ItemRepository < Repository
-
   def new_obj(attributes)
     new_obj_class(attributes, Item)
   end

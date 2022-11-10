@@ -1,14 +1,13 @@
 require_relative 'invoice_repository'
-require 'pry'
 require 'csv'
 require_relative 'sanitize'
 
 class Invoice
-include Sanitize
-  attr_reader :id, 
-              :customer_id, 
-              :merchant_id,  
-              :created_at, 
+  include Sanitize
+  attr_reader :id,
+              :customer_id,
+              :merchant_id,
+              :created_at,
               :updated_at,
               :status
 
@@ -26,5 +25,4 @@ include Sanitize
     @updated_at = Time.now
     self
   end
-
 end

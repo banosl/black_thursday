@@ -1,7 +1,7 @@
 require_relative 'sanitize'
 
 class Merchant
-include Sanitize
+  include Sanitize
   attr_reader :id, :name, :created_at, :updated_at
 
   def initialize(args)

@@ -2,8 +2,7 @@ require_relative './customer'
 require_relative 'repository'
 
 class CustomerRepository < Repository
-
-  def new_obj(attributes)  
+  def new_obj(attributes)
     new_obj_class(attributes, Customer)
   end
 
