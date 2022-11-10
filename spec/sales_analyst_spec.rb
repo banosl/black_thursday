@@ -169,7 +169,7 @@ RSpec.describe SalesAnalyst do
       expect(sales_analyst.most_sold_item_for_merchant(12_334_105)[0].id).to eq(263_541_512)
     end
 
-    xit '#top_revenue_earners' do
+    it '#top_revenue_earners' do
       sales_analyst = @sales_engine.analyst
       expect(sales_analyst.top_revenue_earners(5)).to be_a(Array)
       expect(sales_analyst.top_revenue_earners(5).count).to eq(5)
