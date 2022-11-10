@@ -2,19 +2,21 @@
 
 A business is only as smart as its data. Let’s build a system to manage our data and execute business intelligence queries against the data from a typical e-commerce business.
 
-### Project Overview
-#### Learning Goals
+## Project Overview
+### Learning Goals
 * Use tests to drive both the design and implementation of code
 * Decompose a large application into components
 * Design a solution that is functional, readable, maintainable, and testable
 * Learn an agile approach to building software
-#### Key Concepts
+### Key Concepts
 From a technical perspective, this project will emphasize:
 
 * File I/O
 * Database Operations (CRUD)
 * Encapsulating Responsibilities
 * Light data / analytics
+
+
 
 
 **As a group, discuss and write your answers to the following questions. Include your responses as a section in your project README.**
